@@ -9,7 +9,7 @@ const Home = () => {
         .then(products => setData(products))
     },[])
     return (
-        <div className='grid md:grid-cols-3 gap-5 md:p-5 p-10 md:container mx-auto'>
+        <div className='grid md:grid-cols-3 sm:grid-cols-2  gap-5 md:p-5 px-24 md:container mx-auto'>
             {
                 data.map(product => <Product key={product.id} product = {product} />)
             }
