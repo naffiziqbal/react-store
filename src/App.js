@@ -1,15 +1,35 @@
+import { useEffect, useState } from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import './App.css';
+import Cart from './Components/Cart/Cart';
 import Header from './Components/Header/Header';
 import Home from './Components/Home/Home';
 import Main from './Layout/Main';
 
 function App() {
+  const [data, setData] = useState([]);
+  const [cart, setCart] = useState([]);
+
+  const addItemToCart = (product)=>{
+      const newProduct = [...cart, product];
+      setCart(newProduct);
+  }
+  
+  useEffect( ()=> {
+      fetch('https://fakestoreapi.com/products')
+      .then(res => res.json())
+      .then(products => setData(products))
+  },[]);
+  
+
+
+
   const router = createBrowserRouter([
     {
       path: '/', element: <Main />, children: [
-        { path: "/", element: <Home /> },
-        { path: "/home", element: <Home /> },
+        { path: "/", element: <Home data={data} addItemToCart={addItemToCart} /> },
+        { path: "/home", element: <Home data={data} addItemToCart={addItemToCart}  /> },
+        { path: "/cart", element: <Cart cart={cart}/> },
       ]
     },
     {
