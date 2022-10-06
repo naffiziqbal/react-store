@@ -1,3 +1,8 @@
 .active{
+    margin: 0 2rem;
     border-bottom: 2px solid orange;
+}
+
+.nav__link{
+    margin:0 2rem;
 }

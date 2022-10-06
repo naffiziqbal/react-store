@@ -4,6 +4,7 @@ import './App.css';
 import Cart from './Components/Cart/Cart';
 import Header from './Components/Header/Header';
 import Home from './Components/Home/Home';
+import ProductDetails from './Components/Product/ProductDetails/ProductDetails';
 import Main from './Layout/Main';
 
 function App() {
@@ -30,8 +31,14 @@ function App() {
         { path: "/", element: <Home  data={data} addItemToCart={addItemToCart} /> },
         { path: "/home", element: <Home data={data} addItemToCart={addItemToCart}  /> },
         { path: "/cart", element: <Cart cart={cart}/> },
-      ]
+        {path: "/product/:productId",
+        loader: async ({params})=> {
+          return fetch (`https://fakestoreapi.com/products/${params.productId}`)
+        },
+         element: <ProductDetails />},
+      ],
     },
+
     {
       path: "*", element: (
         <>    

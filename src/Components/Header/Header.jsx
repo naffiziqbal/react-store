@@ -1,55 +1,58 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/solid";
-import "./Header.css"
+import "./Header.css";
 
 const Header = () => {
   const [open, setOpen] = useState(false);
 
   return (
-    <div className="md:shadow-2xl pl-2 pr-2   w-24 fixed  h-screen text-center  md:w-24">
+    <div className="shadow-2xl  w-full    text-center ">
       <div
-        className=" md:w-24 w-12     bg-slate-100 h-screen "
+        className="h-8 w-8  text-slate-900 md:hidden "
         onClick={() => setOpen(!open)}
       >
         {open ? (
-          <XMarkIcon className="w-12 absolute top-2/4 " />
+          <XMarkIcon/>
         ) : (
-          <Bars3Icon className="w-12 absolute top-2/4" />
+          <Bars3Icon />
         )}
+      </div>
+      <div>
         <ul
-          className={`absolute  w-60 bg-slate-900 text-white h-screen ${
-            open ? " p-5 inset-x-16   " : " -inset-x-96  "
-          } duration-500  `}
+          className={` z-30 md:flex absolute  justify-center   md:static   ${ open ? " inset-x-0" : " -inset-x-full"} md:w-full w-1/2 bg-slate-800 md:h-20 h-full  py-5 mb-5  px-5 text-start  text-white  duration-300 ease-in md:sticky `}
         >
-          <div className="absolute top-2/4 -translate-y-2/4  flex flex-col ">
+          <div className="flex md:flex-row flex-col">
             <NavLink
-              className={ ( { isActive,  } ) => isActive ? "active text-left mb-5 hover:text-amber-400 duration-150" : "text-left mb-5 hover:text-amber-400 duration-150"
-            }
+              className={({ isActive }) =>
+                isActive 
+                  ? "active text-left mb-5 hover:text-amber-400 duration-150"
+                  : "text-left mb-5 hover:text-amber-400 duration-150  nav__link"
+              }
               to="/home"
             >
               Home
             </NavLink>
             <NavLink
-              className=" text-left mb-5 hover:text-amber-400 duration-150"
+              className=" text-left mb-5 hover:text-amber-400 duration-150 nav__link"
               to=" "
             >
               Category
             </NavLink>
             <NavLink
-              className=" text-left mb-5 hover:text-amber-400 duration-150"
+              className=" text-left mb-5 hover:text-amber-400 duration-150 nav__link"
               to="/cart"
             >
               Cart
             </NavLink>
             <NavLink
-              className=" text-left mb-5  hover:text-amber-400 duration-150"
+              className=" text-left mb-5  hover:text-amber-400 duration-150 nav__link"
               to="/about"
             >
               About
             </NavLink>
             <NavLink
-              className=" text-left mb-5  hover:text-amber-400 duration-150"
+              className=" text-left mb-5  hover:text-amber-400 duration-150 nav__link"
               to="/login"
             >
               Sign up / Log in

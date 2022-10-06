@@ -14,7 +14,7 @@ const Cart = ({cart}) => {
 
          </div>
             <ol>
-                <div className=''>
+                <div className='mt-10'>
                     {
                         cart.map(item=> <Item key={item.id} item={item}/>)
                     }
