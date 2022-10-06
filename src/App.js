@@ -27,7 +27,7 @@ function App() {
   const router = createBrowserRouter([
     {
       path: '/', element: <Main />, children: [
-        { path: "/", element: <Home data={data} addItemToCart={addItemToCart} /> },
+        { path: "/", element: <Home  data={data} addItemToCart={addItemToCart} /> },
         { path: "/home", element: <Home data={data} addItemToCart={addItemToCart}  /> },
         { path: "/cart", element: <Cart cart={cart}/> },
       ]

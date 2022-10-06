@@ -5,7 +5,6 @@ import Item from './Item/Item';
 
 const Cart = ({cart}) => {
 
-    console.log(cart);
     
     return (
         <div className='container mx-auto bg-slate-100'>
@@ -15,9 +14,9 @@ const Cart = ({cart}) => {
 
          </div>
             <ol>
-                <div className='flex justify-between p-3'>
+                <div className=''>
                     {
-                        cart.map(item=> <Item item={item}/>)
+                        cart.map(item=> <Item key={item.id} item={item}/>)
                     }
                 </div>
             </ol>
