@@ -4,7 +4,6 @@ import { useLoaderData } from "react-router-dom";
 
 const Item = ({ item }) => {
   const productItems = useLoaderData()
-  console.log(productItems);
   
   return (
     <div className="text-center">
