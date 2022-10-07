@@ -4,7 +4,6 @@ import Item from './Item/Item';
 
 
 const Cart = ({cart}) => {
-
     
     return (
         <div className='container mx-auto bg-slate-100'>
@@ -14,9 +13,9 @@ const Cart = ({cart}) => {
 
          </div>
             <ol>
-                <div className='mt-10'>
+                <div className='mt-10 '>
                     {
-                        cart.map(item=> <Item key={item.id} item={item}/>)
+                        cart.map(item=> <Item  key={item.id} item={item}/>)
                     }
                 </div>
             </ol>

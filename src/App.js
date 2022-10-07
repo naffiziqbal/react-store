@@ -5,6 +5,7 @@ import Cart from './Components/Cart/Cart';
 import Header from './Components/Header/Header';
 import Home from './Components/Home/Home';
 import ProductDetails from './Components/Product/ProductDetails/ProductDetails';
+import { addToDb, getStoredCart } from './fakedb';
 import Main from './Layout/Main';
 
 function App() {
@@ -12,8 +13,11 @@ function App() {
   const [cart, setCart] = useState([]);
 
   const addItemToCart = (product)=>{
-      const newProduct = [...cart, product];
-      setCart(newProduct);
+    
+    const newProduct = [...cart, product];
+    setCart(newProduct);
+    addToDb(product.id);
+    console.log(product);
   }
   
   useEffect( ()=> {
@@ -30,7 +34,9 @@ function App() {
       path: '/', element: <Main />, children: [
         { path: "/", element: <Home  data={data} addItemToCart={addItemToCart} /> },
         { path: "/home", element: <Home data={data} addItemToCart={addItemToCart}  /> },
-        { path: "/cart", element: <Cart cart={cart}/> },
+        { path: "/cart", element: <Cart cart={cart}/>, loader :()=>{
+          fetch('https://fakestoreapi.com/carts')
+        } },
         {path: "/product/:productId",
         loader: async ({params})=> {
           return fetch (`https://fakestoreapi.com/products/${params.productId}`)

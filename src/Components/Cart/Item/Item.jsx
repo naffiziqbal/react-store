@@ -1,10 +1,14 @@
 import { TrashIcon } from "@heroicons/react/24/solid";
 import React from "react";
+import { useLoaderData } from "react-router-dom";
 
 const Item = ({ item }) => {
+  const productItems = useLoaderData()
+  console.log(productItems);
+  
   return (
     <div className="text-center">
-      <table class="table w-full">
+      <table className="table w-full">
         <thead className="">
           <tr className="">
             <th>Items</th>
