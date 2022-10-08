@@ -9,7 +9,8 @@ export const loadCartAndProducts = async () => {
     const savedCart = getStoredCart();
     const storedCart = []
     for (const id in savedCart) {
-        const addedProduct = products.find(product => product );
+
+        const addedProduct = products.find (product => product.id === parseInt(id))
         if (addedProduct) {
             const quantity = savedCart[id]
             addedProduct.quantity = quantity;

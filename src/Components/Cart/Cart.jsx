@@ -1,26 +1,23 @@
-import React from 'react';
-import { TrashIcon } from '@heroicons/react/24/solid'
-import Item from './Item/Item';
+import { TrashIcon } from "@heroicons/react/24/solid";
+import React from "react";
 
-
-const Cart = ({cart}) => {
-    
-    return (
-        <div className='container mx-auto bg-slate-100'>
-         <div className="cart-header flex justify-between  bg-slate-300 p-5 font-semibold">
-         <p className=''>List Of You Items</p>
-         <p><TrashIcon  className='w-6 text-orange-400'/></p>
-
-         </div>
-            <ol>
-                <div className='mt-10 '>
-                    {
-                        cart.map((item, idx)=> <Item  key={idx} item={item}/>)
-                    }
-                </div>
-            </ol>
+const Cart = ({ product, dltCartBtn }) => {
+  const { id, title, quantity, price, image } = product;
+  return (
+    <div className="border container mx-auto p-5 justify-between flex">
+      <div className="product_info flex items-center text-start ">
+        <img className="w-16 mr-10" src={image} alt={title} />
+        <div className="flex  flex-col ">
+          <p>{title}</p>
+          <div className="flex flex-row justify-between">
+          <p>Quantity: {quantity}</p>
+          <p > Price : {price}</p>
+          </div>
         </div>
-    );
+      </div>
+        <TrashIcon className="w-6" onClick={()=> dltCartBtn(id)}/>
+    </div>
+  );
 };
 
 export default Cart;

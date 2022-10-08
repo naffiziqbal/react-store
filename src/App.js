@@ -2,10 +2,11 @@ import { useEffect, useState } from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import './App.css';
 import Cart from './Components/Cart/Cart';
+import Item from './Components/Cart/Item/Item';
 import Header from './Components/Header/Header';
 import Home from './Components/Home/Home';
 import ProductDetails from './Components/Product/ProductDetails/ProductDetails';
-import { addToDb, getStoredCart } from './fakedb';
+import { addToDb } from './fakedb';
 import Main from './Layout/Main';
 import { loadCartAndProducts } from './Loader/loadCartandProduct';
 
@@ -34,7 +35,7 @@ function App() {
       path: '/', element: <Main />, children: [
         { path: "/", element: <Home  data={data} addItemToCart={addItemToCart} /> },
         { path: "/home", element: <Home data={data} addItemToCart={addItemToCart}  /> },
-        { path: "/cart", element: <Cart cart={cart}/>, loader: loadCartAndProducts },
+        { path: "/cart", element: <Item />, loader: loadCartAndProducts },
         {path: "/product/:productId",
         loader: async ({params})=> {
           return fetch (`https://fakestoreapi.com/products/${params.productId}`)

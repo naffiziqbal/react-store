@@ -1,29 +1,30 @@
-import { TrashIcon } from "@heroicons/react/24/solid";
-import React from "react";
+import React, { useState } from "react";
 import { useLoaderData } from "react-router-dom";
+import { removeFromDb } from "../../../fakedb";
+import Cart from "../Cart";
 
-const Item = ({ item }) => {
-  const productItems = useLoaderData()
-  
+const Item = () => {
+  const { product, storedCart } = useLoaderData();
+console.log(product);
+
+  const [cart, setCart] = useState(storedCart);
+
+  const dltCartBtn = (id) => {
+    const remaining = cart.filter((product) => product.id !== id);
+    setCart(remaining);
+    removeFromDb(id)
+    console.log(remaining);
+  };
+
   return (
     <div className="text-center">
-      <table className="table w-full">
-        <thead className="">
-          <tr className="">
-            <th>Items</th>
-            <th>Price</th>
-            <th>Quantity</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>{item.title}</td>
-            <td>{item.price}</td>
-            <td>{item.id}</td>
-            <td><TrashIcon className="w-4 text-orange-400" /></td>
-          </tr>
-        </tbody>
-      </table>
+      <p>{product}</p>
+      <p>Saved: {storedCart.length} </p>
+      {storedCart.map((product, idx) => (
+        <Cart key={idx} product={product} dltCartBtn={dltCartBtn} />
+      ))}
+      {/* <p>Stored Cart: {storedCart.length}</p> */}
+      {/* <p> Product: {product.length}</p> */}
     </div>
   );
 };
