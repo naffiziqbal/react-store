@@ -1,7 +1,9 @@
 import { TrashIcon } from "@heroicons/react/24/solid";
 import React from "react";
+import useTitle from "../../hooks/useTitle";
 
 const Cart = ({ product, dltCartBtn }) => {
+  useTitle('Cart')
   const { id, title, quantity, price, image } = product;
   return (
     <div className="border container mx-auto p-5 justify-between flex">

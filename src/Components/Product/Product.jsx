@@ -1,8 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import useTitle from "../../hooks/useTitle";
 import "./Product.css";
 
 const Product = ({ product, addItemToCart }) => {
+  useTitle('Home')
   // console.log(addItemToCart);
   const { id, title, price, description, category } = product;
   // console.log(product.id);

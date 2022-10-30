@@ -1,6 +1,8 @@
+import useTitle from '../../hooks/useTitle';
 import Product from '../Product/Product';
 
 const Home = ({data , addItemToCart}) => {
+    useTitle('Home')
     return (
         <div className='grid md:grid-cols-3 sm:grid-cols-2  gap-5 md:p-5 px-24 md:container mx-auto'>
             {
